@@ -17,7 +17,7 @@ const SERVICES_LIST: ServiceCardData[] = [
     icon: Dog,
     title: 'Adestramento Canino',
     subtitle: 'Comportamento & Obediência',
-    desc: 'Correção de comportamentos indesejados: puxar na guia, reatividade com outros cães ou pessoas, pulos em visitas e latidos excessivos.',
+    desc: 'Correção de comportamentos indesejados: puxar na guia, reatividade com outros cães ou pessoas, pulos em visitas, latidos excessivos, etc.',
     points: ['Passeio agradável com guia solta', 'Controle de impulsos e foco', 'Resolução de medos e reatividade'],
     badge: 'Principal',
   },
@@ -34,9 +34,9 @@ const SERVICES_LIST: ServiceCardData[] = [
     id: 'consultoria',
     icon: Video,
     title: 'Consultorias Online',
-    subtitle: 'Atendimento Individual por Vídeo',
-    desc: 'Orientação personalizada para tutores de qualquer região. Ajuste de rotina, preparo para filhotes e plano de ação estruturado.',
-    points: ['Chamada de vídeo individual 1 a 1', 'Plano de treino personalizado em PDF', 'Suporte direto via WhatsApp'],
+    subtitle: 'Atendimento Individual',
+    desc: 'Orientação personalizada para tutores de qualquer região. Ajuste de rotina, preparo para cães, tutores e plano de ação estruturado.',
+    points: ['Chamada de vídeo individual', 'Suporte direto via WhatsApp'],
     badge: 'Todo o Brasil',
   },
   {
@@ -46,7 +46,7 @@ const SERVICES_LIST: ServiceCardData[] = [
     subtitle: 'Aulas a Domicílio e na Rua',
     desc: 'Treinamento prático direto no ambiente onde as situações acontecem: sua casa, portão, praças e ruas do seu bairro.',
     points: ['Visita e avaliação no domicílio', 'Treino em situações reais da rotina', 'Participação de toda a família'],
-    badge: 'Grande SP',
+    badge: 'Águas da Prata - SP | Região',
   },
 ];
 
@@ -54,7 +54,7 @@ export default function ServicesSection() {
   return (
     <section id="servicos" className="py-20 bg-neutral-50 dark:bg-[#0f0f0f] border-t border-neutral-200 dark:border-neutral-800/80 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        
+
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-semibold text-[#C48E0D] dark:text-[#E5A91A] tracking-wider uppercase transition-colors">

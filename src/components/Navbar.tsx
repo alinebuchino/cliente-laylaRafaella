@@ -29,11 +29,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        isScrolled
-          ? 'bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800/80 py-3 shadow-xs'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${isScrolled
+        ? 'bg-white/95 dark:bg-[#0c0c0c]/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800/80 py-3 shadow-xs'
+        : 'bg-transparent py-5'
+        }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
@@ -60,41 +59,18 @@ export default function Navbar() {
             <button
               onClick={toggleTheme}
               className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors"
-              title={isDark ? 'Mudar para Versão Branco e Amarelo' : 'Mudar para Modo Escuro (Preto e Amarelo)'}
               aria-label="Alternar tema"
             >
               {isDark ? (
                 <>
                   <Sun className="w-3.5 h-3.5 text-[#E5A91A]" />
-                  <span className="text-[11px]">Modo Branco</span>
                 </>
               ) : (
                 <>
                   <Moon className="w-3.5 h-3.5 text-neutral-600" />
-                  <span className="text-[11px]">Modo Escuro</span>
                 </>
               )}
             </button>
-
-            <a
-              href={CONTACT_INFO.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg text-neutral-600 dark:text-neutral-300 hover:text-[#C48E0D] dark:hover:text-[#E5A91A] hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
-              title="Instagram @layla.adestradora"
-            >
-              <Instagram className="w-4 h-4" />
-            </a>
-
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#E5A91A] hover:bg-[#d89c0f] text-black text-xs font-semibold shadow-xs transition-all"
-            >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span>WhatsApp</span>
-            </a>
           </div>
 
           {/* Mobile controls */}

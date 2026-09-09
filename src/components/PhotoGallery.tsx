@@ -25,7 +25,7 @@ export default function PhotoGallery() {
   return (
     <section id="fotos" className="py-20 bg-white dark:bg-[#0c0c0c] border-t border-neutral-200 dark:border-neutral-850 transition-colors duration-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        
+
         {/* Header with Navigation Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
@@ -37,7 +37,7 @@ export default function PhotoGallery() {
               Momentos e registros reais
             </h2>
             <p className="mt-2 text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed transition-colors">
-              Deslize para o lado para explorar a galeria fotográfica dos nossos atendimentos e cães em evolução.
+              Deslize para o lado para explorar um pouco mais dos nossos atendimentos.
             </p>
           </div>
 
@@ -108,11 +108,10 @@ export default function PhotoGallery() {
               key={dotIdx}
               onClick={() => scrollToSlide(dotIdx)}
               aria-label={`Ir para foto ${dotIdx + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                currentIndex === dotIdx
-                  ? 'w-7 bg-[#E5A91A]'
-                  : 'w-2 bg-neutral-300 dark:bg-neutral-800 hover:bg-neutral-400 dark:hover:bg-neutral-700'
-              }`}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === dotIdx
+                ? 'w-7 bg-[#E5A91A]'
+                : 'w-2 bg-neutral-300 dark:bg-neutral-800 hover:bg-neutral-400 dark:hover:bg-neutral-700'
+                }`}
             />
           ))}
         </div>

@@ -20,12 +20,7 @@ export interface ServiceItem {
 export interface GalleryPhoto {
   id: string;
   title: string;
-  category: 'passeio' | 'matilha' | 'domicilio' | 'filhotes';
-  categoryLabel: string;
   imageUrl: string;
-  dogName: string;
-  breed: string;
-  achievement: string;
 }
 
 export interface Testimonial {
@@ -51,5 +46,4 @@ export interface ContactInfo {
   whatsappDisplay: string;
   location: string;
   hours: string;
-  email: string;
 }

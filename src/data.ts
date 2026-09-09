@@ -1,28 +1,28 @@
 import { ServiceItem, GalleryPhoto, Testimonial, ContactInfo } from './types';
 
 // Images imported directly
-import heroImg from './assets/images/layla_dog_hero_1788984506805.jpg';
-import packImg from './assets/images/pack_socialization_1788984521831.jpg';
-import puppyImg from './assets/images/puppy_home_training_1788984534034.jpg';
-import portraitImg from './assets/images/trainer_portrait_1788984545119.jpg';
-import laylaVideoPoster from './assets/images/layla_video_presentation_poster_1788988473119.jpg';
+import laylaImg from './assets/images/layla.jpeg';
+import cliente1Img from './assets/images/clientes1.jpeg';
+import cliente2Img from './assets/images/clientes2.jpeg';
+import cliente3Img from './assets/images/clientes3.jpeg';
+import cliente4Img from './assets/images/clientes4.jpeg';
+import cliente5Img from './assets/images/clientes5.jpeg';
+import cliente6Img from './assets/images/clientes6.jpeg';
+import cliente7Img from './assets/images/clientes7.jpeg';
+import laylaVideoPoster from './assets/images/layla_cao.png';
 
 export const ASSETS = {
-  hero: heroImg,
-  pack: packImg,
-  puppy: puppyImg,
-  portrait: portraitImg,
+  layla: laylaImg,
+  cliente1: cliente1Img,
+  cliente2: cliente2Img,
+  cliente3: cliente3Img,
+  cliente4: cliente4Img,
+  cliente5: cliente5Img,
+  cliente6: cliente6Img,
+  cliente7: cliente7Img,
   videoPoster: laylaVideoPoster,
 };
 
-/**
- * VÍDEO DE APRESENTAÇÃO DA LAYLA RAFAELLA
- * Adicione ou altere o vídeo de apresentação via código aqui.
- * Suporta:
- * - Arquivo local .mp4 na pasta public/ (ex: '/apresentacao_layla.mp4')
- * - Link do YouTube: 'https://www.youtube.com/watch?v=...' ou 'https://youtu.be/...'
- * - Link externo direto (.mp4 / .webm): 'https://seu-servidor.com/video.mp4'
- */
 export const PRESENTATION_VIDEO = {
   url: '/apresentacao_layla.mp4',
   title: 'Apresentação Oficial de Layla Rafaella',
@@ -34,11 +34,10 @@ export const CONTACT_INFO: ContactInfo = {
   title: 'Adestradora Canina & Comportamentalista',
   instagramHandle: '@layla.adestradora',
   instagramUrl: 'https://www.instagram.com/layla.adestradora/',
-  whatsappNumber: '5511998765432', // configurable in UI or quick chat
+  whatsappNumber: '5511998765432',
   whatsappDisplay: '(11) 99876-5432',
-  location: 'São Paulo, SP e Região Metropolitana (Presencial) | Todo o Brasil (Online)',
-  hours: 'Segunda a Sábado, das 08h às 19h',
-  email: 'contato@laylarafaella.com.br',
+  location: 'Águas da Prata - SP e Região (Presencial) | Todo o Brasil (Online)',
+  hours: 'Segunda a Sábado, das 08h às 19h'
 };
 
 export const SERVICES: ServiceItem[] = [
@@ -130,83 +129,43 @@ export const SERVICES: ServiceItem[] = [
 export const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
     id: 'gal-1',
-    title: 'Harmonia em Dupla no Passeio',
-    category: 'passeio',
-    categoryLabel: 'Passeio & Guia',
-    imageUrl: heroImg,
-    dogName: 'Thor & Luna',
-    breed: 'Golden Retriever & Border Collie',
-    achievement: 'Fim dos puxões na guia e caminhada relaxada sob distrações.'
+    title: 'Cliente 1',
+    imageUrl: cliente1Img,
   },
   {
     id: 'gal-2',
-    title: 'Treino de Autocontrole em Matilha',
-    category: 'matilha',
-    categoryLabel: 'Matilha & Socialização',
-    imageUrl: packImg,
-    dogName: 'Grupo Social de Sábado',
-    breed: 'Diferentes raças e portes',
-    achievement: 'Zero conflitos e atenção absoluta aos comandos de liberação.'
+    title: 'Cliente 2',
+    imageUrl: cliente2Img,
   },
   {
     id: 'gal-3',
-    title: 'Educação e Boas Maneiras em Casa',
-    category: 'domicilio',
-    categoryLabel: 'Presencial & Domicílio',
-    imageUrl: puppyImg,
-    dogName: 'Bento',
-    breed: 'Golden Retriever (Filhote)',
-    achievement: 'Aprendizado de limites, sem mordidas e xixi no local exato.'
+    title: 'Cliente 3',
+    imageUrl: cliente3Img,
   },
   {
     id: 'gal-4',
-    title: 'Conexão e Confiança Estabelecida',
-    category: 'passeio',
-    categoryLabel: 'Vínculo & Foco',
-    imageUrl: portraitImg,
-    dogName: 'Simba',
-    breed: 'Golden Retriever',
-    achievement: 'Superação de insegurança e reatividade com pessoas desconhecidas.'
+    title: 'Cliente 4',
+    imageUrl: cliente4Img,
   },
   {
     id: 'gal-5',
-    title: 'Passeio com Foco e Autocontrole',
-    category: 'passeio',
-    categoryLabel: 'Passeio',
-    imageUrl: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=900&q=80',
-    dogName: 'Max',
-    breed: 'Labrador Retriever',
-    achievement: 'Foco total no tutor durante a caminhada.'
+    title: 'Cliente 5',
+    imageUrl: cliente5Img,
   },
   {
     id: 'gal-6',
-    title: 'Socialização Positiva em Campo',
-    category: 'matilha',
-    categoryLabel: 'Socialização',
-    imageUrl: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80',
-    dogName: 'Matilha Social',
-    breed: 'Diversas raças',
-    achievement: 'Interação harmoniosa entre cães.'
+    title: 'Cliente 6',
+    imageUrl: cliente6Img,
   },
   {
     id: 'gal-7',
-    title: 'Desenvolvimento de Filhotes',
-    category: 'filhotes',
-    categoryLabel: 'Filhotes',
-    imageUrl: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=900&q=80',
-    dogName: 'Pipoca',
-    breed: 'Jack Russell Terrier',
-    achievement: 'Curiosidade e estímulo positivo precoce.'
+    title: 'Cliente 7',
+    imageUrl: cliente7Img,
   },
   {
     id: 'gal-8',
-    title: 'Obediência e Prática ao Ar Livre',
-    category: 'passeio',
-    categoryLabel: 'Treino ao Ar Livre',
-    imageUrl: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=900&q=80',
-    dogName: 'Bono',
-    breed: 'Vira-lata SRD',
-    achievement: 'Comando de permanência e calma no parque.'
+    title: 'Cliente 8',
+    imageUrl: laylaVideoPoster,
   }
 ];
 

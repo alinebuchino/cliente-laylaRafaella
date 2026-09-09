@@ -40,7 +40,7 @@ export default function AboutSection() {
   const togglePlay = () => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
-        videoRef.current.play().catch(() => {});
+        videoRef.current.play().catch(() => { });
         setIsPlaying(true);
       } else {
         videoRef.current.pause();
@@ -69,9 +69,9 @@ export default function AboutSection() {
   const handleFullscreen = () => {
     if (containerRef.current) {
       if (document.fullscreenElement) {
-        document.exitFullscreen().catch(() => {});
+        document.exitFullscreen().catch(() => { });
       } else {
-        containerRef.current.requestFullscreen().catch(() => {});
+        containerRef.current.requestFullscreen().catch(() => { });
       }
     }
   };
@@ -86,11 +86,11 @@ export default function AboutSection() {
     <section id="sobre" className="py-20 bg-white dark:bg-[#0c0c0c] border-t border-neutral-200 dark:border-neutral-850 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
+
           {/* Video Presentation of Layla (6 cols) */}
           <div className="lg:col-span-6" id="video">
             <div className="rounded-2xl overflow-hidden border border-neutral-300 dark:border-neutral-800 bg-black shadow-2xl transition-colors">
-              
+
               {/* Top Bar of the Video Player */}
               <div className="bg-neutral-900/95 border-b border-neutral-800 px-4 py-2.5 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
@@ -123,7 +123,7 @@ export default function AboutSection() {
                     <video
                       ref={videoRef}
                       src={videoSource || undefined}
-                      poster={PRESENTATION_VIDEO.poster || ASSETS.videoPoster || ASSETS.portrait}
+                      poster={PRESENTATION_VIDEO.poster || ASSETS.videoPoster}
                       playsInline
                       preload="metadata"
                       muted={isMuted}
@@ -233,7 +233,7 @@ export default function AboutSection() {
               <div className="p-4 bg-neutral-50 dark:bg-[#111111] flex items-center justify-between gap-3 border-t border-neutral-200 dark:border-neutral-800 transition-colors">
                 <div className="flex items-center gap-3">
                   <img
-                    src={ASSETS.portrait}
+                    src={ASSETS.videoPoster}
                     alt="Layla Rafaella"
                     className="w-10 h-10 rounded-full object-cover border border-[#E5A91A]/40"
                   />
@@ -241,11 +241,6 @@ export default function AboutSection() {
                     <div className="text-neutral-900 dark:text-white text-sm font-semibold">Layla Rafaella</div>
                     <div className="text-xs text-[#C48E0D] dark:text-[#E5A91A] font-medium">Adestradora & Comportamentalista</div>
                   </div>
-                </div>
-
-                <div className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
-                  <span className="w-2 h-2 rounded-full bg-[#E5A91A]" />
-                  <span>Apresentação</span>
                 </div>
               </div>
 

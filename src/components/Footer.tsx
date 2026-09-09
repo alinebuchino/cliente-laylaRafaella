@@ -33,8 +33,8 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-neutral-500 text-[11px]">
-          <p>© {new Date().getFullYear()} Layla Rafaella • Adestramento Canino. Todos os direitos reservados.</p>
-          <p>São Paulo e Grande SP • Consultorias Online para todo o Brasil</p>
+          <p>© {new Date().getFullYear()} Layla Rafaella • Adestramento Canino <br></br>Todos os direitos reservados.</p>
+          <p>Águas da Prata - SP e Região <br></br> Consultorias Online para todo o Brasil</p>
         </div>
       </div>
     </footer>
