@@ -8,22 +8,17 @@ import {
   Volume2,
   VolumeX,
   RotateCcw,
-  Upload,
   Maximize,
-  Link as LinkIcon,
   Video as VideoIcon,
   Sparkles
 } from 'lucide-react';
-import { ASSETS, CONTACT_INFO } from '../data';
+import { ASSETS, CONTACT_INFO, PRESENTATION_VIDEO } from '../data';
 
 export default function AboutSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(30);
-  const [customVideoUrl, setCustomVideoUrl] = useState<string | null>(null);
-  const [videoUrlInput, setVideoUrlInput] = useState('');
-  const [showUrlModal, setShowUrlModal] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -31,6 +26,16 @@ export default function AboutSection() {
   const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(
     'Olá Layla! Assisti ao seu vídeo de apresentação e gostaria de saber mais sobre o adestramento.'
   )}`;
+
+  const videoSource = PRESENTATION_VIDEO.url.trim();
+
+  // Helper for YouTube embed check
+  const getYouTubeEmbedUrl = (url: string) => {
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+    return match ? `https://www.youtube.com/embed/${match[1]}?autoplay=1` : null;
+  };
+
+  const ytEmbed = videoSource ? getYouTubeEmbedUrl(videoSource) : null;
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -61,28 +66,6 @@ export default function AboutSection() {
     }
   };
 
-  const handleFileUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setCustomVideoUrl(url);
-      setIsPlaying(true);
-      setTimeout(() => {
-        if (videoRef.current) {
-          videoRef.current.play().catch(() => {});
-        }
-      }, 100);
-    }
-  };
-
-  const handleApplyUrl = () => {
-    if (videoUrlInput.trim()) {
-      setCustomVideoUrl(videoUrlInput.trim());
-      setShowUrlModal(false);
-      setIsPlaying(true);
-    }
-  };
-
   const handleFullscreen = () => {
     if (containerRef.current) {
       if (document.fullscreenElement) {
@@ -99,14 +82,6 @@ export default function AboutSection() {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  // Helper for YouTube embed check
-  const getYouTubeEmbedUrl = (url: string) => {
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-    return match ? `https://www.youtube.com/embed/${match[1]}?autoplay=1` : null;
-  };
-
-  const ytEmbed = customVideoUrl ? getYouTubeEmbedUrl(customVideoUrl) : null;
-
   return (
     <section id="sobre" className="py-20 bg-white dark:bg-[#0c0c0c] border-t border-neutral-200 dark:border-neutral-850 transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -122,7 +97,7 @@ export default function AboutSection() {
                   <div className="w-2.5 h-2.5 rounded-full bg-[#E5A91A] animate-pulse" />
                   <span className="font-semibold text-white tracking-wide flex items-center gap-1.5">
                     <VideoIcon className="w-3.5 h-3.5 text-[#E5A91A]" />
-                    Apresentação da Layla
+                    {PRESENTATION_VIDEO.title || 'Apresentação da Layla'}
                   </span>
                 </div>
                 <span className="text-[11px] text-neutral-400 font-medium">
@@ -138,7 +113,7 @@ export default function AboutSection() {
                 {ytEmbed ? (
                   <iframe
                     src={ytEmbed}
-                    title="Vídeo de Apresentação da Layla"
+                    title={PRESENTATION_VIDEO.title}
                     className="w-full h-full border-0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -147,11 +122,17 @@ export default function AboutSection() {
                   <>
                     <video
                       ref={videoRef}
-                      src={customVideoUrl || undefined}
-                      poster={ASSETS.portrait}
+                      src={videoSource || undefined}
+                      poster={PRESENTATION_VIDEO.poster || ASSETS.videoPoster || ASSETS.portrait}
                       playsInline
+                      preload="metadata"
                       muted={isMuted}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain bg-black"
+                      onLoadedMetadata={() => {
+                        if (videoRef.current && !isNaN(videoRef.current.duration)) {
+                          setDuration(videoRef.current.duration);
+                        }
+                      }}
                       onTimeUpdate={() => {
                         if (videoRef.current) {
                           setCurrentTime(videoRef.current.currentTime);
@@ -164,7 +145,7 @@ export default function AboutSection() {
                       onClick={togglePlay}
                     />
 
-                    {/* Poster overlay when not playing or no custom video loaded */}
+                    {/* Poster overlay when not playing */}
                     {!isPlaying && (
                       <div
                         onClick={togglePlay}
@@ -248,8 +229,8 @@ export default function AboutSection() {
                 </div>
               )}
 
-              {/* Sub-bar with Layla's ID and Action to Change Video */}
-              <div className="p-4 bg-neutral-50 dark:bg-[#111111] flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 dark:border-neutral-800 transition-colors">
+              {/* Sub-bar with Layla's ID */}
+              <div className="p-4 bg-neutral-50 dark:bg-[#111111] flex items-center justify-between gap-3 border-t border-neutral-200 dark:border-neutral-800 transition-colors">
                 <div className="flex items-center gap-3">
                   <img
                     src={ASSETS.portrait}
@@ -262,32 +243,9 @@ export default function AboutSection() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  {/* Upload video file button */}
-                  <label
-                    title="Adicionar arquivo de vídeo (.mp4)"
-                    className="cursor-pointer inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 transition-colors"
-                  >
-                    <Upload className="w-3.5 h-3.5 text-[#E5A91A]" />
-                    <span>Adicionar vídeo .mp4</span>
-                    <input
-                      type="file"
-                      accept="video/*"
-                      onChange={handleFileUpload}
-                      className="hidden"
-                    />
-                  </label>
-
-                  {/* Insert video link button */}
-                  <button
-                    type="button"
-                    onClick={() => setShowUrlModal(true)}
-                    title="Inserir link do YouTube ou vídeo"
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] font-medium text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-800 transition-colors cursor-pointer"
-                  >
-                    <LinkIcon className="w-3.5 h-3.5 text-[#E5A91A]" />
-                    <span className="hidden sm:inline">Inserir Link</span>
-                  </button>
+                <div className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
+                  <span className="w-2 h-2 rounded-full bg-[#E5A91A]" />
+                  <span>Apresentação</span>
                 </div>
               </div>
 
@@ -358,43 +316,6 @@ export default function AboutSection() {
 
         </div>
       </div>
-
-      {/* Modal to paste Video Link (YouTube, Vimeo, etc.) */}
-      {showUrlModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#111111] border border-neutral-200 dark:border-neutral-800 rounded-2xl max-w-md w-full p-6 shadow-2xl">
-            <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-2">
-              Inserir link do vídeo de apresentação
-            </h3>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">
-              Cole o link do seu vídeo no YouTube, Vimeo ou link direto .mp4:
-            </p>
-            <input
-              type="text"
-              value={videoUrlInput}
-              onChange={(e) => setVideoUrlInput(e.target.value)}
-              placeholder="https://www.youtube.com/watch?v=... ou .mp4"
-              className="w-full px-3.5 py-2.5 rounded-lg text-xs bg-neutral-50 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white focus:outline-none focus:border-[#E5A91A] mb-4 font-mono"
-            />
-            <div className="flex items-center justify-end gap-2">
-              <button
-                type="button"
-                onClick={() => setShowUrlModal(false)}
-                className="px-4 py-2 rounded-lg text-xs font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-              >
-                Cancelar
-              </button>
-              <button
-                type="button"
-                onClick={handleApplyUrl}
-                className="px-4 py-2 rounded-lg text-xs font-semibold bg-[#E5A91A] hover:bg-[#d89c0f] text-black transition-colors"
-              >
-                Salvar e Reproduzir
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

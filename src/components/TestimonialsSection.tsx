@@ -1,17 +1,15 @@
-import { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
 import {
   Star,
   Quote,
   CheckCircle2,
   MessageCircle,
-  Heart,
   Sparkles,
   ChevronLeft,
   ChevronRight,
   Maximize2,
   X,
-  Camera,
-  Upload
+  Camera
 } from 'lucide-react';
 import { TESTIMONIALS, CONTACT_INFO } from '../data';
 import { Testimonial } from '../types';
@@ -19,7 +17,6 @@ import { useHorizontalSlider } from '../hooks/useHorizontalSlider';
 
 export default function TestimonialsSection() {
   const [selectedPhotoTestimonial, setSelectedPhotoTestimonial] = useState<Testimonial | null>(null);
-  const [customPhotos, setCustomPhotos] = useState<Record<string, string>>({});
 
   const {
     sliderRef,
@@ -29,14 +26,6 @@ export default function TestimonialsSection() {
     prevSlide,
     handleScroll,
   } = useHorizontalSlider({ totalItems: TESTIMONIALS.length, gap: 24 });
-
-  const handleCustomPhotoUpload = (e: ChangeEvent<HTMLInputElement>, id: string) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setCustomPhotos((prev) => ({ ...prev, [id]: url }));
-    }
-  };
 
   const whatsappGeneralUrl = `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(
     'Olá Layla! Li os depoimentos reais dos tutores no seu site e gostaria de agendar uma avaliação para o meu cachorro.'
@@ -85,10 +74,10 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Slider Indicator Bar for Mobile Touch */}
+        {/* Mobile Swipe Hint */}
         <div className="flex items-center justify-between sm:hidden mb-4 text-xs text-neutral-500 dark:text-neutral-400">
           <span className="inline-flex items-center gap-1 text-[11px] text-[#C48E0D] dark:text-[#E5A91A] font-medium">
-            <Sparkles className="w-3 h-3" /> Deslize para o lado para ver mais
+            <Sparkles className="w-3 h-3" /> Deslize horizontalmente para ver mais relatos
           </span>
           <span className="font-mono text-xs">{currentIndex + 1} / {TESTIMONIALS.length}</span>
         </div>
@@ -100,121 +89,101 @@ export default function TestimonialsSection() {
           className="flex gap-6 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scroll-smooth no-scrollbar"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {TESTIMONIALS.map((item, index) => {
-            const currentPhoto = customPhotos[item.id] || item.photoUrl;
-
-            return (
-              <div
-                key={item.id}
-                className="w-[88vw] sm:w-[380px] md:w-[420px] lg:w-[400px] shrink-0 snap-start rounded-2xl bg-white dark:bg-[#0c0c0c] border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 flex flex-col justify-between transition-all shadow-xs overflow-hidden group"
-              >
-                {/* Photo of the Real Client / Testimonial */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900 border-b border-neutral-100 dark:border-neutral-800">
-                  {currentPhoto ? (
-                    <img
-                      src={currentPhoto}
-                      alt={`Depoimento de ${item.tutorName} e seu cão ${item.dogName}`}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center text-neutral-400 p-4 text-center">
-                      <Camera className="w-8 h-8 mb-1 text-[#E5A91A]" />
-                      <span className="text-xs">Foto do cliente / print do depoimento</span>
-                    </div>
-                  )}
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
-
-                  {/* Top Badges */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                    <span className="text-[10px] font-semibold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
-                      {item.serviceType}
-                    </span>
-
-                    <div className="flex items-center gap-1 bg-black/60 backdrop-blur-md px-2 py-1 rounded-full border border-white/10 text-[#E5A91A] text-xs">
-                      <Star className="w-3 h-3 fill-current" />
-                      <span className="font-bold text-white text-[11px]">5.0</span>
-                    </div>
+          {TESTIMONIALS.map((item) => (
+            <div
+              key={item.id}
+              className="w-[88vw] sm:w-[380px] md:w-[420px] lg:w-[400px] shrink-0 snap-start rounded-2xl bg-white dark:bg-[#0c0c0c] border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 flex flex-col justify-between transition-all shadow-xs overflow-hidden group"
+            >
+              {/* Photo of the Real Client / Testimonial */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900 border-b border-neutral-100 dark:border-neutral-800">
+                {item.photoUrl ? (
+                  <img
+                    src={item.photoUrl}
+                    alt={`Depoimento de ${item.tutorName} e seu cão ${item.dogName}`}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center text-neutral-400 p-4 text-center">
+                    <Camera className="w-8 h-8 mb-1 text-[#E5A91A]" />
+                    <span className="text-xs">Foto do cliente</span>
                   </div>
+                )}
 
-                  {/* Bottom Info over Image */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between pointer-events-auto">
-                    <div>
-                      <span className="text-[10px] uppercase font-bold text-[#E5A91A] tracking-wider block drop-shadow-sm">
-                        {item.date || 'Depoimento Real'}
-                      </span>
-                      <h4 className="text-xs sm:text-sm font-bold text-white drop-shadow-sm leading-tight">
-                        {item.dogName} • {item.dogBreed}
-                      </h4>
-                    </div>
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
 
-                    {/* Expand Photo Button */}
-                    <button
-                      onClick={() => setSelectedPhotoTestimonial(item)}
-                      title="Ampliar foto do depoimento"
-                      className="w-7 h-7 rounded-lg bg-black/70 hover:bg-[#E5A91A] hover:text-black text-white flex items-center justify-center backdrop-blur-sm transition-colors cursor-pointer"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                    </button>
+                {/* Top Badges */}
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                  <span className="text-[10px] font-semibold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+                    {item.serviceType}
+                  </span>
+
+                  <div className="flex items-center gap-1 bg-black/60 backdrop-blur-md px-2 py-1 rounded-full border border-white/10 text-[#E5A91A] text-xs">
+                    <Star className="w-3 h-3 fill-current" />
+                    <span className="font-bold text-white text-[11px]">5.0</span>
                   </div>
                 </div>
 
-                {/* Card Body with Story in First Person */}
-                <div className="p-6 flex flex-col justify-between flex-grow">
+                {/* Bottom Info over Image */}
+                <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between pointer-events-auto">
                   <div>
-                    {/* First-person story quote */}
-                    <div className="relative mb-4">
-                      <Quote className="w-5 h-5 text-[#E5A91A]/30 dark:text-[#E5A91A]/40 mb-1" />
-                      <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-200 leading-relaxed font-normal italic">
-                        "{item.story}"
-                      </p>
-                    </div>
-
-                    {/* Result Achievement Tag */}
-                    <div className="pt-3 border-t border-neutral-100 dark:border-neutral-850 flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#C48E0D] dark:text-[#E5A91A] shrink-0 mt-0.5" />
-                      <span className="text-xs font-semibold text-neutral-900 dark:text-neutral-200">
-                        {item.result}
-                      </span>
-                    </div>
+                    <span className="text-[10px] uppercase font-bold text-[#E5A91A] tracking-wider block drop-shadow-sm">
+                      {item.date || 'Depoimento Real'}
+                    </span>
+                    <h4 className="text-xs sm:text-sm font-bold text-white drop-shadow-sm leading-tight">
+                      {item.dogName} • {item.dogBreed}
+                    </h4>
                   </div>
 
-                  {/* Tutor Profile Footer */}
-                  <div className="mt-5 pt-4 border-t border-neutral-100 dark:border-neutral-850 flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full bg-[#E5A91A]/15 border border-[#E5A91A]/30 flex items-center justify-center font-bold text-xs text-[#C48E0D] dark:text-[#E5A91A]">
-                        {item.tutorName.charAt(0)}
-                      </div>
-                      <div>
-                        <h5 className="text-xs font-bold text-neutral-950 dark:text-white leading-tight">
-                          {item.tutorName}
-                        </h5>
-                        <p className="text-[10px] text-neutral-500 dark:text-neutral-400">
-                          Tutor(a) verificado(a)
-                        </p>
-                      </div>
-                    </div>
+                  {/* Expand Photo Button */}
+                  <button
+                    onClick={() => setSelectedPhotoTestimonial(item)}
+                    title="Ampliar foto do depoimento"
+                    className="w-7 h-7 rounded-lg bg-black/70 hover:bg-[#E5A91A] hover:text-black text-white flex items-center justify-center backdrop-blur-sm transition-colors cursor-pointer"
+                  >
+                    <Maximize2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
 
-                    {/* Option to replace/test photo directly */}
-                    <label
-                      title="Adicionar ou trocar foto/print deste depoimento"
-                      className="cursor-pointer inline-flex items-center gap-1 text-[11px] text-neutral-400 hover:text-[#C48E0D] dark:hover:text-[#E5A91A] transition-colors py-1 px-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-850"
-                    >
-                      <Upload className="w-3 h-3" />
-                      <span className="hidden sm:inline">Trocar foto</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => handleCustomPhotoUpload(e, item.id)}
-                        className="hidden"
-                      />
-                    </label>
+              {/* Card Body with Story in First Person */}
+              <div className="p-6 flex flex-col justify-between flex-grow">
+                <div>
+                  {/* First-person story quote */}
+                  <div className="relative mb-4">
+                    <Quote className="w-5 h-5 text-[#E5A91A]/30 dark:text-[#E5A91A]/40 mb-1" />
+                    <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-200 leading-relaxed font-normal italic">
+                      "{item.story}"
+                    </p>
+                  </div>
+
+                  {/* Result Achievement Tag */}
+                  <div className="pt-3 border-t border-neutral-100 dark:border-neutral-850 flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#C48E0D] dark:text-[#E5A91A] shrink-0 mt-0.5" />
+                    <span className="text-xs font-semibold text-neutral-900 dark:text-neutral-200">
+                      {item.result}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Tutor Profile Footer */}
+                <div className="mt-5 pt-4 border-t border-neutral-100 dark:border-neutral-850 flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#E5A91A]/15 border border-[#E5A91A]/30 flex items-center justify-center font-bold text-xs text-[#C48E0D] dark:text-[#E5A91A]">
+                    {item.tutorName.charAt(0)}
+                  </div>
+                  <div>
+                    <h5 className="text-xs font-bold text-neutral-950 dark:text-white leading-tight">
+                      {item.tutorName}
+                    </h5>
+                    <p className="text-[10px] text-neutral-500 dark:text-neutral-400">
+                      Tutor(a) verificado(a)
+                    </p>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         {/* Pagination Dots */}
@@ -223,7 +192,7 @@ export default function TestimonialsSection() {
             <button
               key={dotIdx}
               onClick={() => scrollToSlide(dotIdx)}
-              aria-label={`Ir para slide ${dotIdx + 1}`}
+              aria-label={`Ir para depoimento ${dotIdx + 1}`}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 currentIndex === dotIdx
                   ? 'w-7 bg-[#E5A91A]'
@@ -233,20 +202,23 @@ export default function TestimonialsSection() {
           ))}
         </div>
 
-        {/* Bottom CTA to encourage tutor contact */}
-        <div className="mt-12 p-6 rounded-2xl bg-white dark:bg-[#0c0c0c] border border-neutral-200 dark:border-neutral-800 text-center max-w-2xl mx-auto shadow-xs">
-          <h3 className="text-base sm:text-lg font-bold text-neutral-950 dark:text-white">
-            Quer ver essa transformação na rotina do seu cão?
+        {/* Bottom Direct CTA */}
+        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0c0c0c] border border-neutral-200 dark:border-neutral-800 text-center max-w-3xl mx-auto shadow-xs transition-colors">
+          <div className="w-10 h-10 rounded-full bg-[#E5A91A]/15 text-[#C48E0D] dark:text-[#E5A91A] flex items-center justify-center mx-auto mb-3">
+            <Quote className="w-5 h-5 fill-current" />
+          </div>
+          <h3 className="text-lg sm:text-xl font-bold text-neutral-950 dark:text-white">
+            Quer ver a mesma transformação com o seu cachorro?
           </h3>
-          <p className="mt-1.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 max-w-lg mx-auto">
-            Não importa se o desafio é puxar a guia, ansiedade de separação ou reatividade. Converse diretamente com a Layla e tire suas dúvidas.
+          <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 mt-2 max-w-xl mx-auto leading-relaxed">
+            Dê o primeiro passo agendando uma avaliação comportamental com Layla Rafaella.
           </p>
-          <div className="mt-5 flex justify-center">
+          <div className="mt-6 flex justify-center">
             <a
               href={whatsappGeneralUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#E5A91A] hover:bg-[#d89c0f] text-black font-semibold text-xs shadow-xs transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#E5A91A] hover:bg-[#d89c0f] text-black font-semibold text-xs transition-all shadow-xs"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Quero uma avaliação para o meu cão</span>
@@ -271,7 +243,7 @@ export default function TestimonialsSection() {
             {/* Photo Preview */}
             <div className="aspect-[16/10] sm:aspect-[16/9] w-full bg-black overflow-hidden flex items-center justify-center">
               <img
-                src={customPhotos[selectedPhotoTestimonial.id] || selectedPhotoTestimonial.photoUrl}
+                src={selectedPhotoTestimonial.photoUrl}
                 alt={selectedPhotoTestimonial.tutorName}
                 className="w-full h-full object-cover"
               />

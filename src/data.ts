@@ -5,12 +5,28 @@ import heroImg from './assets/images/layla_dog_hero_1788984506805.jpg';
 import packImg from './assets/images/pack_socialization_1788984521831.jpg';
 import puppyImg from './assets/images/puppy_home_training_1788984534034.jpg';
 import portraitImg from './assets/images/trainer_portrait_1788984545119.jpg';
+import laylaVideoPoster from './assets/images/layla_video_presentation_poster_1788988473119.jpg';
 
 export const ASSETS = {
   hero: heroImg,
   pack: packImg,
   puppy: puppyImg,
   portrait: portraitImg,
+  videoPoster: laylaVideoPoster,
+};
+
+/**
+ * VÍDEO DE APRESENTAÇÃO DA LAYLA RAFAELLA
+ * Adicione ou altere o vídeo de apresentação via código aqui.
+ * Suporta:
+ * - Arquivo local .mp4 na pasta public/ (ex: '/apresentacao_layla.mp4')
+ * - Link do YouTube: 'https://www.youtube.com/watch?v=...' ou 'https://youtu.be/...'
+ * - Link externo direto (.mp4 / .webm): 'https://seu-servidor.com/video.mp4'
+ */
+export const PRESENTATION_VIDEO = {
+  url: '/apresentacao_layla.mp4',
+  title: 'Apresentação Oficial de Layla Rafaella',
+  poster: laylaVideoPoster,
 };
 
 export const CONTACT_INFO: ContactInfo = {
@@ -104,6 +120,13 @@ export const SERVICES: ServiceItem[] = [
   }
 ];
 
+/**
+ * GALERIA DE FOTOS (DESLIZE HORIZONTAL)
+ * Adicione ou altere fotos da galeria aqui via código.
+ * Basta adicionar novos objetos à lista com:
+ * - id: identificador único (ex: 'gal-9')
+ * - imageUrl: URL da foto (Unsplash, link externo ou arquivo na pasta public/ ex: '/foto.jpg')
+ */
 export const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
     id: 'gal-1',
@@ -187,33 +210,12 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
   }
 ];
 
-export const METHODOLOGY_STEPS = [
-  {
-    step: '01',
-    title: 'Diagnóstico Comportamental',
-    description: 'Analisamos o histórico, a rotina familiar, os gatilhos e a causa raiz do comportamento indesejado do seu cão.',
-    highlight: 'Compreensão antes da correção'
-  },
-  {
-    step: '02',
-    title: 'Ajuste de Ambiente & Rotina',
-    description: 'Criamos um ambiente favorável ao aprendizado, eliminando oportunidades de erro e satisfazendo as necessidades biológicas do cão.',
-    highlight: 'Enriquecimento e previsibilidade'
-  },
-  {
-    step: '03',
-    title: 'Treinamento Prático Guiado',
-    description: 'Você e seu cão aprendem juntos os comandos funcionais com reforço positivo, clareza e consistência.',
-    highlight: 'Metodologia sem violência'
-  },
-  {
-    step: '04',
-    title: 'Autonomia para a Família',
-    description: 'Transferimos todo o conhecimento para que você consiga lidar com qualquer situação com segurança e tranquilidade duradoura.',
-    highlight: 'Resultados para toda a vida'
-  }
-];
-
+/**
+ * DEPOIMENTOS REAIS DOS CLIENTES (SLIDES HORIZONTAIS)
+ * Adicione ou edite os depoimentos aqui via código.
+ * - photoUrl: coloque aqui o link da foto do cliente ou o print do depoimento real
+ * - story: relato em 1ª pessoa do tutor
+ */
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't-1',
