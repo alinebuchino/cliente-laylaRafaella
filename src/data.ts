@@ -15,6 +15,7 @@ import depoimento3 from './assets/images/depoimentos/depoimento3.jpeg';
 import depoimento4 from './assets/images/depoimentos/depoimento4.jpeg';
 import depoimento5 from './assets/images/depoimentos/depoimento5.jpeg';
 import depoimento6 from './assets/images/depoimentos/depoimento6.jpeg';
+import apresentacaoVideo from '../public/apresentacao_layla.mp4';
 
 import laylaVideoPoster from './assets/images/layla_cao.png';
 
@@ -37,7 +38,7 @@ export const ASSETS = {
 };
 
 export const PRESENTATION_VIDEO = {
-  url: '/apresentacao_layla.mp4',
+  url: apresentacaoVideo,
   title: '',
   poster: laylaVideoPoster,
 };
@@ -47,8 +48,8 @@ export const CONTACT_INFO: ContactInfo = {
   title: 'Adestradora Canina & Comportamentalista',
   instagramHandle: '@layla.adestradora',
   instagramUrl: 'https://www.instagram.com/layla.adestradora/',
-  whatsappNumber: '5511998765432',
-  whatsappDisplay: '(11) 99876-5432',
+  whatsappNumber: '5519991570093',
+  whatsappDisplay: '(19) 99157-0093',
   location: 'Águas da Prata - SP e Região (Presencial) | Todo o Brasil (Online)',
   hours: 'Segunda a Sábado, das 08h às 19h'
 };
