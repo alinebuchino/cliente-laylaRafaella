@@ -15,7 +15,6 @@ import depoimento3 from './assets/images/depoimentos/depoimento3.jpeg';
 import depoimento4 from './assets/images/depoimentos/depoimento4.jpeg';
 import depoimento5 from './assets/images/depoimentos/depoimento5.jpeg';
 import depoimento6 from './assets/images/depoimentos/depoimento6.jpeg';
-import apresentacaoVideo from '../public/apresentacao_layla.mp4';
 
 import laylaVideoPoster from './assets/images/layla_cao.png';
 
@@ -38,7 +37,7 @@ export const ASSETS = {
 };
 
 export const PRESENTATION_VIDEO = {
-  url: apresentacaoVideo,
+  url: `${import.meta.env.BASE_URL}apresentacao_layla.mp4`,
   title: '',
   poster: laylaVideoPoster,
 };
