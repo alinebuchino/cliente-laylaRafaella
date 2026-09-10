@@ -20,6 +20,7 @@ export default function TestimonialsSection() {
   const {
     sliderRef,
     currentIndex,
+    totalDots,
     scrollToSlide,
     nextSlide,
     prevSlide,
@@ -85,7 +86,7 @@ export default function TestimonialsSection() {
           </span>
 
           <span className="font-mono text-xs">
-            {currentIndex + 1} / {TESTIMONIALS.length}
+            {currentIndex + 1} / {totalDots}
           </span>
         </div>
 
@@ -162,19 +163,21 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex items-center justify-center gap-2 mt-4">
-          {TESTIMONIALS.map((_, dotIdx) => (
-            <button
-              key={dotIdx}
-              onClick={() => scrollToSlide(dotIdx)}
-              aria-label={`Ir para depoimento ${dotIdx + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === dotIdx
-                ? 'w-7 bg-[#E5A91A]'
-                : 'w-2 bg-neutral-300 dark:bg-neutral-800 hover:bg-neutral-400 dark:hover:bg-neutral-700'
-                }`}
-            />
-          ))}
-        </div>
+        {totalDots > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-4">
+            {Array.from({ length: totalDots }).map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                onClick={() => scrollToSlide(dotIdx)}
+                aria-label={`Ir para depoimento ${dotIdx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === dotIdx
+                  ? 'w-7 bg-[#E5A91A]'
+                  : 'w-2 bg-neutral-300 dark:bg-neutral-800 hover:bg-neutral-400 dark:hover:bg-neutral-700'
+                  }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Lightbox Modal */}

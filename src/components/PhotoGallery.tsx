@@ -16,6 +16,7 @@ export default function PhotoGallery() {
   const {
     sliderRef,
     currentIndex,
+    totalDots,
     scrollToSlide,
     nextSlide,
     prevSlide,
@@ -65,7 +66,7 @@ export default function PhotoGallery() {
           <span className="inline-flex items-center gap-1 text-[11px] text-[#C48E0D] dark:text-[#E5A91A] font-medium">
             <Sparkles className="w-3 h-3" /> Deslize para o lado para ver mais fotos
           </span>
-          <span className="font-mono text-xs">{currentIndex + 1} / {GALLERY_PHOTOS.length}</span>
+          <span className="font-mono text-xs">{currentIndex + 1} / {totalDots}</span>
         </div>
 
         {/* Horizontal Slider (Without captions/subtitles) */}
@@ -102,19 +103,21 @@ export default function PhotoGallery() {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex items-center justify-center gap-1.5 mt-2">
-          {GALLERY_PHOTOS.map((_, dotIdx) => (
-            <button
-              key={dotIdx}
-              onClick={() => scrollToSlide(dotIdx)}
-              aria-label={`Ir para foto ${dotIdx + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === dotIdx
-                ? 'w-7 bg-[#E5A91A]'
-                : 'w-2 bg-neutral-300 dark:bg-neutral-800 hover:bg-neutral-400 dark:hover:bg-neutral-700'
-                }`}
-            />
-          ))}
-        </div>
+        {totalDots > 1 && (
+          <div className="flex items-center justify-center gap-1.5 mt-2">
+            {Array.from({ length: totalDots }).map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                onClick={() => scrollToSlide(dotIdx)}
+                aria-label={`Ir para foto ${dotIdx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === dotIdx
+                  ? 'w-7 bg-[#E5A91A]'
+                  : 'w-2 bg-neutral-300 dark:bg-neutral-800 hover:bg-neutral-400 dark:hover:bg-neutral-700'
+                  }`}
+              />
+            ))}
+          </div>
+        )}
 
       </div>
 

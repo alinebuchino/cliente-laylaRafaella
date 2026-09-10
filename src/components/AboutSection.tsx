@@ -88,7 +88,7 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
           {/* Video Presentation of Layla (6 cols) */}
-          <div className="lg:col-span-6" id="video">
+          <div className="order-2 lg:order-1 lg:col-span-6" id="video">
             <div className="rounded-2xl overflow-hidden border border-neutral-300 dark:border-neutral-800 bg-black shadow-2xl transition-colors">
 
               {/* Top Bar of the Video Player */}
@@ -245,7 +245,7 @@ export default function AboutSection() {
           </div>
 
           {/* Succinct Bio (6 cols) */}
-          <div className="lg:col-span-6">
+          <div className="order-1 lg:order-2 lg:col-span-6">
             <span className="text-xs font-semibold text-[#C48E0D] dark:text-[#E5A91A] tracking-wider uppercase transition-colors">
               Sobre a Profissional
             </span>
