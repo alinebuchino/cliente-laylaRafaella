@@ -86,7 +86,7 @@ export default function PhotoGallery() {
               <div className="aspect-[3/4] w-full overflow-hidden relative">
                 <img
                   src={photo.imageUrl}
-                  alt={`Registro fotográfico ${index + 1}`}
+                  alt={`Layla Rafaella Adestramento Canino - Registro real de aula prática ${index + 1}`}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />

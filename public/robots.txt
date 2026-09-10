@@ -1,0 +1,6 @@
+# Robots.txt para Layla Rafaella Adestramento Canino
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://laylarafaella.com.br/sitemap.xml

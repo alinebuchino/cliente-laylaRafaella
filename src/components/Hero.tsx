@@ -58,7 +58,7 @@ export default function Hero() {
             <div className="relative rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-xl bg-neutral-100 dark:bg-neutral-900 transition-colors">
               <img
                 src={ASSETS.layla}
-                alt="Layla Rafaella adestrando cão ao ar livre"
+                alt="Layla Rafaella Adestradora Canina e Comportamentalista em Águas da Prata SP e Região"
                 className="w-full h-[380px] sm:h-[420px] object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

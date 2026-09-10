@@ -132,7 +132,7 @@ export default function TestimonialsSection() {
                 {item.photoUrl ? (
                   <img
                     src={item.photoUrl}
-                    alt={`print depoimento ${item.id}`}
+                    alt={`Depoimento de tutor de cão atendido por Layla Rafaella Adestradora - Depoimento ${item.id}`}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
