@@ -61,7 +61,7 @@ export default function ServicesSection() {
             Serviços Prestados
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-neutral-950 dark:text-white mt-1.5 transition-colors">
-            Como Layla pode ajudar você e seu cão
+            Como eu posso ajudar você e seu cão
           </h2>
           <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 transition-colors">
             Formatos flexíveis e objetivos para atender as necessidades específicas da sua rotina.

@@ -97,12 +97,9 @@ export default function AboutSection() {
                   <div className="w-2.5 h-2.5 rounded-full bg-[#E5A91A] animate-pulse" />
                   <span className="font-semibold text-white tracking-wide flex items-center gap-1.5">
                     <VideoIcon className="w-3.5 h-3.5 text-[#E5A91A]" />
-                    {PRESENTATION_VIDEO.title || 'Apresentação da Layla'}
+                    {PRESENTATION_VIDEO.title || ''}
                   </span>
                 </div>
-                <span className="text-[11px] text-neutral-400 font-medium">
-                  Vídeo Oficial
-                </span>
               </div>
 
               {/* Video Screen */}
@@ -257,11 +254,11 @@ export default function AboutSection() {
             </h2>
 
             <p className="mt-4 text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed transition-colors">
-              Com anos de experiência e centenas de famílias atendidas, Layla Rafaella trabalha com metodologia baseada em reforço positivo, respeito aos limites biológicos do animal e capacitação real dos tutores.
+              Com anos de experiência e centenas de famílias atendidas, trabalho com metodologia baseada em respeito aos limites biológicos do animal e capacitação real dos tutores.
             </p>
 
             <p className="mt-3 text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed transition-colors">
-              O objetivo não é apenas ensinar comandos mecânicos, mas construir uma convivência tranquila no dia a dia, solucionando puxões no passeio, reatividade na rua e comportamentos desafiadores dentro de casa.
+              O objetivo não é apenas ensinar comandos mecânicos, mas construir uma convivência tranquila no dia a dia, solucionando puxões no passeio, reatividade na rua, comportamentos desafiadores dentro de casa e etc.
             </p>
 
             {/* Concise Checklist */}
@@ -293,7 +290,7 @@ export default function AboutSection() {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#E5A91A] hover:bg-[#d89c0f] text-black font-semibold text-xs shadow-xs transition-all"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Falar com a Layla</span>
+                <span>Fale diretamente comigo</span>
               </a>
 
               <a

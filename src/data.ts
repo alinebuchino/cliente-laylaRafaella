@@ -1,14 +1,21 @@
 import { ServiceItem, GalleryPhoto, Testimonial, ContactInfo } from './types';
 
-// Images imported directly
 import laylaImg from './assets/images/layla.jpeg';
-import cliente1Img from './assets/images/clientes1.jpeg';
-import cliente2Img from './assets/images/clientes2.jpeg';
-import cliente3Img from './assets/images/clientes3.jpeg';
-import cliente4Img from './assets/images/clientes4.jpeg';
-import cliente5Img from './assets/images/clientes5.jpeg';
-import cliente6Img from './assets/images/clientes6.jpeg';
-import cliente7Img from './assets/images/clientes7.jpeg';
+import cliente1Img from './assets/images/clientes/clientes1.jpeg';
+import cliente2Img from './assets/images/clientes/clientes2.jpeg';
+import cliente3Img from './assets/images/clientes/clientes3.jpeg';
+import cliente4Img from './assets/images/clientes/clientes4.jpeg';
+import cliente5Img from './assets/images/clientes/clientes5.jpeg';
+import cliente6Img from './assets/images/clientes/clientes6.jpeg';
+import cliente7Img from './assets/images/clientes/clientes7.jpeg';
+
+import depoimento1 from './assets/images/depoimentos/depoimento1.jpeg';
+import depoimento2 from './assets/images/depoimentos/depoimento2.jpeg';
+import depoimento3 from './assets/images/depoimentos/depoimento3.jpeg';
+import depoimento4 from './assets/images/depoimentos/depoimento4.jpeg';
+import depoimento5 from './assets/images/depoimentos/depoimento5.jpeg';
+import depoimento6 from './assets/images/depoimentos/depoimento6.jpeg';
+
 import laylaVideoPoster from './assets/images/layla_cao.png';
 
 export const ASSETS = {
@@ -20,12 +27,18 @@ export const ASSETS = {
   cliente5: cliente5Img,
   cliente6: cliente6Img,
   cliente7: cliente7Img,
+  depoimento1: depoimento1,
+  depoimento2: depoimento2,
+  depoimento3: depoimento3,
+  depoimento4: depoimento4,
+  depoimento5: depoimento5,
+  depoimento6: depoimento6,
   videoPoster: laylaVideoPoster,
 };
 
 export const PRESENTATION_VIDEO = {
   url: '/apresentacao_layla.mp4',
-  title: 'Apresentação Oficial de Layla Rafaella',
+  title: '',
   poster: laylaVideoPoster,
 };
 
@@ -178,75 +191,27 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't-1',
-    tutorName: 'Mariana Duarte',
-    dogName: 'Thor',
-    dogBreed: 'Golden Retriever, 2 anos',
-    serviceType: 'Adestramento Presencial',
-    story: 'Eu quase desisti de passear na rua. O Thor pesava 34kg e me arrastava cada vez que via outro cachorro ou moto. Eu voltava para casa com dor nos pulsos e chorando de frustração. Na primeira aula com a Layla, eu entendi exatamente onde eu estava errando. Hoje eu caminho com ele com a guia completamente solta, usando apenas uma mão. Mudou a minha vida e a dele!',
-    rating: 5,
-    result: 'Passeio tranquilo com guia frouxa e fim dos puxões',
-    photoUrl: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80',
-    date: 'Passeio no Parque'
+    photoUrl: depoimento1,
   },
   {
     id: 't-2',
-    tutorName: 'Ricardo Silveira',
-    dogName: 'Fred',
-    dogBreed: 'Border Collie, 1 ano e meio',
-    serviceType: 'Comportamento & Foco',
-    story: 'Eu achava que o Fred era "ligado no 220v" e que nunca se acalmaria dentro de casa. Ele destruía sofás, pulava nas visitas e latia sem parar. As aulas da Layla me ensinaram a ler as necessidades dele e canalizar a energia com calma, sem nenhum tipo de bronca violenta. Eu finalmente tenho paz na minha sala e um parceiro focado e educado.',
-    rating: 5,
-    result: 'Fim da destruição e autocontrole dentro de casa',
-    photoUrl: 'https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?auto=format&fit=crop&w=800&q=80',
-    date: 'Treino de Autocontrole'
+    photoUrl: depoimento2
   },
   {
     id: 't-3',
-    tutorName: 'Camila & Gustavo',
-    dogName: 'Luna',
-    dogBreed: 'SRD (Resgatada), 3 anos',
-    serviceType: 'Reabilitação de Medo',
-    story: 'Nós resgatamos a Luna e ela tinha pânico de sair pelo portão, tremia muito e rosnava para qualquer estranho que tentava se aproximar. Estávamos desesperados sem saber como acolhê-la. A Layla nos atendeu com uma sensibilidade absurda. Em poucas semanas, eu vi minha cachorra desabrochar, perder o medo e abanar o rabo nos passeios. Sou eternamente grata!',
-    rating: 5,
-    result: 'Superação de traumas e segurança para passear',
-    photoUrl: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=800&q=80',
-    date: 'Adaptação & Confiança'
+    photoUrl: depoimento3
   },
   {
     id: 't-4',
-    tutorName: 'Beatriz Nogueira',
-    dogName: 'Amora',
-    dogBreed: 'Buldogue Francês (Filhote), 4 meses',
-    serviceType: 'Consultoria Online',
-    story: 'Eu fiz a consultoria online porque moro no interior e estava perdida com xixi no tapete e mordidas fortes nos tornozelos. A Layla me entregou um plano cirúrgico. Em menos de 10 dias eu já tinha a rotina do banheiro 100% resolvida e a filhote dormindo a noite toda. O suporte diário no WhatsApp tirou todas as minhas dúvidas na hora. Recomendo de olhos fechados!',
-    rating: 5,
-    result: 'Xixi no lugar certo em 10 dias e zero mordidas',
-    photoUrl: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80',
-    date: 'Consultoria Filhotes'
+    photoUrl: depoimento4
   },
   {
     id: 't-5',
-    tutorName: 'Lucas Mendes',
-    dogName: 'Zeus',
-    dogBreed: 'Pastor Alemão, 2 anos',
-    serviceType: 'Imersão Prática para Donos',
-    story: 'Eu participei da Imersão para Donos e foi uma virada de chave completa para mim. Eu sempre achei que precisava ser autoritário ou usar tranco de guia para impor respeito, mas a Layla me provou na prática que liderança serena e reforço positivo geram dez vezes mais conexão. Eu saí de lá outra pessoa e o Zeus hoje anda conectado comigo em qualquer lugar.',
-    rating: 5,
-    result: 'Liderança tranquila e conexão profunda sem trancos',
-    photoUrl: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&w=800&q=80',
-    date: 'Imersão Prática'
+    photoUrl: depoimento5
   },
   {
     id: 't-6',
-    tutorName: 'Dra. Juliana Prado',
-    dogName: 'Nick',
-    dogBreed: 'Spitz Alemão, 3 anos',
-    serviceType: 'Atendimento Domiciliar',
-    story: 'O Nick latia histericamente para qualquer barulho no corredor do prédio e eu já tinha recebido duas notificações graves do condomínio. Eu estava à beira do desespero. Com os exercícios que a Layla me passou direto no meu apartamento, desarmamos o gatilho da porta em três sessões. Hoje ele fica no camilho relaxado mesmo com a campainha tocando.',
-    rating: 5,
-    result: 'Fim dos latidos excessivos e harmonia no condomínio',
-    photoUrl: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80',
-    date: 'Atendimento em Apartamento'
+    photoUrl: depoimento6
   }
 ];
 

@@ -25,16 +25,7 @@ export interface GalleryPhoto {
 
 export interface Testimonial {
   id: string;
-  tutorName: string;
-  dogName: string;
-  dogBreed: string;
-  serviceType: string;
-  story: string;
-  rating: number;
-  result: string;
   photoUrl?: string;
-  printUrl?: string;
-  date?: string;
 }
 
 export interface ContactInfo {

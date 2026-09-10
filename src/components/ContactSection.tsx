@@ -13,7 +13,7 @@ export default function ContactSection() {
     if (dogName) text += ` e sou tutor(a) do cãozinho *${dogName}*`;
     if (message) text += `.\nAssunto: ${message}`;
     text += `.\nGostaria de entender melhor como funciona o adestramento e agendar uma avaliação.`;
-    
+
     const url = `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
@@ -23,25 +23,25 @@ export default function ContactSection() {
   return (
     <section id="contato" className="py-20 bg-neutral-50 dark:bg-[#0f0f0f] border-t border-neutral-200 dark:border-neutral-800/80 transition-colors duration-200">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        
+
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-semibold text-[#C48E0D] dark:text-[#E5A91A] tracking-wider uppercase transition-colors">
             Entre em Contato
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-neutral-950 dark:text-white mt-1.5 transition-colors">
-            Fale diretamente com Layla
+            Quer ver a mesma transformação com o seu cachorro?
           </h2>
           <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300 transition-colors">
-            Tire suas dúvidas ou agende uma avaliação comportamental pelo WhatsApp ou acompanhe o perfil no Instagram.
+            Dê o primeiro passo e tire suas dúvidas ou agende uma avaliação comportamental pelo WhatsApp ou acompanhe o perfil no Instagram.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          
+
           {/* Left Column: Direct Links (5 cols) */}
           <div className="md:col-span-5 space-y-4">
-            
+
             {/* Instagram Card */}
             <a
               href={CONTACT_INFO.instagramUrl}
@@ -145,7 +145,7 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1">
-                    Como a Layla pode te ajudar?
+                    Como eu, Layla, posso te ajudar?
                   </label>
                   <textarea
                     rows={3}
