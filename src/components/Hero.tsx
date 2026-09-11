@@ -18,7 +18,7 @@ export default function Hero() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white leading-[1.2] transition-colors">
-              Mais <span className="text-[#C48E0D] dark:text-[#E5A91A]">conexão</span>, mais <span className="text-[#C48E0D] dark:text-[#E5A91A]">equilíbrio</span>. Uma convivência muito <span className="text-[#C48E0D] dark:text-[#E5A91A]">melhor</span>. 🐾
+              Mais <span className="text-[#C48E0D] dark:text-[#E5A91A]">conexão</span>, mais <span className="text-[#C48E0D] dark:text-[#E5A91A]">equilíbrio</span>. Uma convivência muito <span className="text-[#C48E0D] dark:text-[#E5A91A]">melhor</span> 🐾
             </h1>
 
             <p className="mt-5 text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-xl transition-colors">
